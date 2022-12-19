@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Cadastro/Login</title>
+</head>
+<body>
+
+    <h2>Entre na sua conta</h2>
+
+    <form action="index.php" method="post">
+
+        <label for="email_form_login">Email:
+            <input type="email" id="email_form_login" name="email" required>
+        </label>
+
+        <label for="senha_form_login">Senha:
+            <input type="password" id="senha_form_login" name="pass" required>
+        </label>
+
+        <input type="submit" value="Entrar">
+
+    </form>
+    <hr>
+    
+    <h2>Cadastre sua conta</h2>
+
+    <form action="index.php" method="POST">    
+
+    <label for="usuario_form_cadastro">Nome:
+            <input type="text" id="usuario_form_cadastro" name="user" required>
+        </label>
+
+        <label for="email_form_cadastro">Email:
+            <input type="email" id="email_form_cadastro" name="email" required>
+        </label>
+
+        <label for="senha_form_cadastro">Senha:
+            <input type="password" id="senha_form_cadastro" name="pass" required>
+        </label>
+
+        <input type="submit" value="Cadastrar">
+
+    </form>
+    <hr>
+
+    <h2>Mudar senha da conta</h2>
+
+    <form action="index.php" method="POST"> 
+
+    <label for="email_form_trocar_senha">Email:
+        <input type="email" id="email_form_trocar_senha" name="email" required>
+    </label>
+    <label for="senha_form_trocar_Senha">Senha antiga:
+        <input type="password" id="senha_form_trocar_Senha" name="pass" required>
+    </label>
+
+    <label for="novaSenha_form_trocar_Senha">Senha Nova:
+        <input type="password" id="novaSenha_form_trocar_Senha" name="newPass" required>
+    </label>
+
+    <input type="submit" value="Mudar">
+
+    </form>
+    <hr>
+
+    <h2>Deletar conta</h2>
+
+    <form action="index.php" method="POST"> 
+
+    <label for="email_form_deletar">Email:
+        <input type="email" id="email_form_deletar" name="email" required>
+    </label>
+
+    <label for="senha_form_deletar">Senha:
+        <input type="password" id="senha_form_deletar" name="pass" required>
+    </label>
+
+    <input type="submit" value="Deletar" name="deletar">
+
+    </form>
+    <hr>
+    
+</body>
+</html>
