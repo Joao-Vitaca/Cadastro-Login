@@ -1,10 +1,7 @@
 <?php
 
-    require_once "conexao_mysql.php";
-    require_once "func_entrar.php";
-    require_once "func_cadastrar.php";
-    require_once "func_mudar_Senha.php";
-    require_once "func_deletar_conta.php";
+    require_once "conexao_pdo.php";
+    require_once "conta.php";
 
     $nome = $_POST['user']??null;
     $email = $_POST['email']??null;
@@ -12,13 +9,16 @@
     $novaSenha = $_POST['newPass']??null;
     $deletar = $_POST['deletar']??null;
 
+    $conexao = new conexao("banco","localhost","root","");
+
+    conta::setConn($conexao->conectar());
+
     if($nome != null){
-        echo cadastrar($nome, $email, $senha);
-        
+        echo conta::cadastrar($nome, $email, $senha);
     }else if($novaSenha != null){
-        echo mudarSenha($email, $senha, $novaSenha);
+        echo conta::mudar_Senha($email, $senha, $novaSenha);
     }else if($deletar != null){
-        echo deletarConta($email, $senha);
+        echo conta::deletar($email, $senha);
     }else{
-        echo entrar($email, $senha);
+        echo conta::entrar($email, $senha);
     }
