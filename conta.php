@@ -16,7 +16,7 @@ class conta{
         $res = $res->fetch(PDO::FETCH_ASSOC);
 
         if($res!=null){ 
-            if($res['senha'] == $senha){
+            if(password_verify($senha, $res['senha'])){
                 self::$conn = null;
                 return "Entrou com sucesso!";
             }else{
@@ -41,7 +41,7 @@ class conta{
             self::$conn = null;
             return "Email já cadastrado!";  
         }
-
+        $senha = password_hash($senha, PASSWORD_DEFAULT);
         $sql = "insert into clientes values (null,?,?,?)";
         $res = self::$conn->prepare($sql);
 
@@ -60,9 +60,10 @@ class conta{
         $res = $res->fetch(PDO::FETCH_ASSOC);
 
         if($res!=null){ 
-            if($res['senha'] == $senha){
+            if(password_verify($senha, $res['senha'])){
                 $sql = "update clientes set senha = ? where email = ?";
                 $res = self::$conn->prepare($sql);
+                $novaSenha = password_hash($novaSenha, PASSWORD_DEFAULT);
 
                 $res->execute([$novaSenha,$email]);
 
@@ -87,7 +88,7 @@ class conta{
         $res = $res->fetch(PDO::FETCH_ASSOC);
 
         if($res!=null){ 
-            if($res['senha'] == $senha){
+            if(password_verify($senha, $res['senha'])){
                 $sql = "delete from clientes where email = ?";
                 $res = self::$conn->prepare($sql);
 
